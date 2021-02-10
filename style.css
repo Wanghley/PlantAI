@@ -2,3 +2,40 @@ button{
     background-color: #F7A22B !important;
     border-color: #F7A22B !important;
 }
+#conheca {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+#quem {
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+#quemquem{
+    max-width: 50%;
+    margin-left: 50px;
+}
+.card-img-top{
+    width:95px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fotos{
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.card{
+    width: 7rem;
+    margin: 10px;
+}
+.card-text{
+    font-size: 0.7em;
+}
+.card-body{
+    padding: 8px;
+}
