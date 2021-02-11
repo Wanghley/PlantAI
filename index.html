@@ -14,8 +14,8 @@
 </head>
 <body>
     <!-- Barra de navegação -->
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container" style="position: sticky; top: 0;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
         <a class="navbar-brand" href="#">
             <img src="imagens/logo.png" width="35" height="35" alt="">
             PlantAi
@@ -67,42 +67,42 @@
             </div>
         </div>
         <div class="fotos">
-            <div class="card integrantes">
-                <img src="imagens/fotoDavi.png" class="card-img-top foto" alt="">
-                <div class="card-body body1">
+            <div class="card card-p">
+                <img src="imagens/fotoDavi.png" class="card-img-top card-img-top-p" alt="">
+                <div class="card-body card-body-p">
                   <p class="card-text">Davi Lemos</p>
                 </div>
             </div>
-            <div class="card integrantes">
-                <img src="imagens/fotoGustavo.png" class="card-img-top foto" alt="">
-                <div class="card-body body1">
+            <div class="card card-p">
+                <img src="imagens/fotoGustavo.png" class="card-img-top card-img-top-p" alt="">
+                <div class="card-body card-body-p">
                   <p class="card-text">Gustavo Araújo</p>
                 </div>
             </div>
-            <div class="card integrantes">
-                <img src="imagens/fotoIasmin.png" class="card-img-top foto" alt="">
-                <div class="card-body body1">
+            <div class="card card-p">
+                <img src="imagens/fotoIasmin.png" class="card-img-top card-img-top-p" alt="">
+                <div class="card-body card-body-p">
                   <p class="card-text">Iasmin Marques</p>
                 </div>
             </div>
-            <div class="card integrantes">
-                <img src="imagens/fotoJoao.png" class="card-img-top foto" alt="">
-                <div class="card-body body1">
+            <div class="card card-p">
+                <img src="imagens/fotoJoao.png" class="card-img-top card-img-top-p" alt="">
+                <div class="card-body card-body-p">
                   <p class="card-text">João Pedro Soares</p>
                 </div>
             </div>
             
         </div>
         <div class="fotos" style="margin-left:132px;">
-            <div class="card integrantes">
-                <img src="imagens/fotoVinicius.png" class="card-img-top foto" alt="">
-                <div class="card-body body1">
+            <div class="card card-p">
+                <img src="imagens/fotoVinicius.png" class="card-img-top card-img-top-p" alt="">
+                <div class="card-body card-body-p">
                   <p class="card-text">Vinícius Antunes</p>
                 </div>
             </div>
-            <div class="card integrantes">
-                <img src="imagens/fotoWanghley.png" class="card-img-top foto" alt="">
-                <div class="card-body body1">
+            <div class="card card-p">
+                <img src="imagens/fotoWanghley.png" class="card-img-top card-img-top-p" alt="">
+                <div class="card-body card-body-p">
                   <p class="card-text">Wanghley Martins</p>
                 </div>
             </div>
@@ -113,34 +113,101 @@
       <h2>Como a PlantAi funciona</h2>
       <p> PlantAi é um aplicativo que pode fazer reconhecimento de doenças a partir de uma fotografia, assim oferecendo uma solução eficaz para um maior rendimento da sua produção.</p>
       <div class="fotos">
-        <div class="card passoApasso" style=>
-          <img src="imagens/playstore.svg" class="card-img-top oqFazer" alt="">
-          <div class="card-body body2">
+        <div class="card card-g" style=>
+          <img src="imagens/logo.png" class="card-img-top card-img-top-g" alt="">
+          <div class="card-body card-body-g">
             <p class="card-text">Baixe o aplicativo PlantAi na PlayStore</p>
           </div>
         </div>
-        <div class="card passoApasso" style=>
-          <img src="imagens/celular.png" class="card-img-top oqFazer" alt="">
-          <div class="card-body body2">
+        <div class="card card-g" style=>
+          <img src="imagens/celular.png" class="card-img-top card-img-top-g" alt="">
+          <div class="card-body card-body-g">
             <p class="card-text">Faça cadastro no aplicativo</p>
           </div>
         </div>
-        <div class="card passoApasso" style=>
-          <img src="imagens/camera.png" class="card-img-top oqFazer" alt="">
-          <div class="card-body body2">
+        <div class="card card-g" style=>
+          <img src="imagens/camera.png" class="card-img-top card-img-top-g" alt="">
+          <div class="card-body card-body-g">
             <p class="card-text">Tire foto da planta adoecida</p>
           </div>
         </div>
-        <div class="card passoApasso" style=>
-          <img src="imagens/plantinha.png" class="card-img-top oqFazer" alt="">
-          <div class="card-body body2">
+        <div class="card card-g" style=>
+          <img src="imagens/plantinha.png" class="card-img-top card-img-top-g" alt="">
+          <div class="card-body card-body-g">
             <p class="card-text">Diagnostique sua planta em instantes</p>
           </div>
         </div>
       </div>
-      <img src="imagens/google-play-badge.png" width="250px">
-      
-      
+      <div id="para-esquerda">
+        <img src="imagens/google-play-badge.png" width="180px">
+      </div>
     </div>
+
+    <!--Perguntas frequentes-->
+    <div class="container" id="faq">
+      <h2>Perguntas frequentes</h2>
+      <div class="card questoes" style="width: 50rem;">
+        <div class="card-body">
+          <h5 class="card-title">Onde posso encontrar o aplicativo?</h5>
+          <p class="card-text">Você pode baixar gratuitamente nosso aplicativo na Google Play Store. Ainda não temos previsões para lançamentos no sistema IOS</p>
+        </div>
+      </div>
+      <div class="card questoes" style="width: 50rem;">
+        <div class="card-body">
+          <h5 class="card-title">Em quanto tempo eu tenho o resultado do diagnóstico das minha planta?</h5>
+          <p class="card-text">Depois do upload da imagem, o PlantAI processa sua imagem, te dando o diagnóstico da sua planta em questão de segundos.</p>
+        </div>
+      </div>
+      <div class="card questoes" style="width: 50rem;">
+        <div class="card-body">
+          <h5 class="card-title">Se estiver offline, posso utilizar o app?</h5>
+          <p class="card-text">Sim, mas o upload da imagem só será feito para o aplicativo quando houver uma conexão a internet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!--Contate-nos-->
+    <div class="container" id="contato">
+      <h2>Contate-nos</h2>
+      <div class="fotos">
+        <form style="margin-right: 20rem;">
+          <div class="mb-3">
+            <label for="InputName" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="InputName">
+          </div>
+          <div class="mb-3">
+            <label for="InputEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="nome@exemplo.com">
+            <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com mais ninguém.</div>
+          </div>
+          <div class="mb-3">
+            <label for="InputAssunto" class="form-label">Assunto</label>
+            <input type="email" class="form-control" id="InputAssunto">
+          </div>
+         <div class="mb-3">
+            <label for="Textarea" class="form-label">Mensagem</label>
+           <textarea class="form-control" id="Textarea" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">enviar</button>
+        </form>
+        <div>
+          <h5>Email</h5>
+          <p>plantAI.contato@gmail.com</p>
+          <h5>Telefone</h5>
+          <p>(61) 99999-9999</p>
+          <h5>Instagram</h5>
+          <p>planta_ai</p>
+        </div>
+      </div>
+    </div>
+    <!--Footer-->
+    <footer class="container">
+      <div id="footer-imgs">
+        <img src="imagens/logo.png" alt="" width="50px">
+        <img src="imagens/instagramLogo.png" alt="" width="50px">
+        <img src="imagens/facebookLogo.png" alt="" width="50px">
+      </div>
+      <p>© 2020 Copyright- PlantAi</p>
+    </footer>
 </body>
 </html>

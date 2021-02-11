@@ -17,7 +17,7 @@ button{
     max-width: 50%;
     margin-left: 50px;
 }
-.foto{
+.card-image-top-p{
     width:95px;
     display: block;
     margin-left: auto;
@@ -29,32 +29,32 @@ button{
     justify-content: flex-start;
     flex-wrap: wrap;
 }
-.integrantes{
+
+.card{
 
     border:none;
     border-radius:20px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    
+    
+}
+.card-g{
+    width: 18rem;
+    margin: 10px;
+}
+.card-p{
     width: 7rem;
     margin: 10px;
     font-size: 0.7em;
 }
-.passoApasso{
-
-    border:none;
-    border-radius:20px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    width: 18rem;
-    margin: 10px;
-    
-}
-.oqFazer{
+.card-img-top-g{
     width:170px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top:5px;
 }
-.body1{
+.card-body-p{
     padding: 8px;
 }
 
@@ -63,8 +63,40 @@ body{
 }
 h2{
     font-family: "Patua One";
+    margin-bottom: 20px;
 }
 @font-face {
     font-family: "Patua One";
     src: url(PatuaOne-Regular.ttf);
   }
+h5{
+    font-family: "Patua One";
+    color:#80C783;
+}
+label{
+    font-family: "Patua One";
+    color:#80C783;
+}
+.questoes{
+    margin-bottom: 20px;
+}
+.container{
+    margin-bottom: 70px;
+}
+#para-esquerda{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 80px;
+}
+#footer-imgs{
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+footer{
+    margin:auto;
+    background-color: #69B66B;
+    text-align: center;
+    font-size: 0.6em;
+    margin-bottom: 0px !important; 
+}
