@@ -14,7 +14,6 @@ button{
     margin-bottom: 20px;
 }
 #quemquem{
-    max-width: 50%;
     margin-left: 50px;
 }
 .card-image-top-p{
@@ -29,12 +28,18 @@ button{
     justify-content: flex-start;
     flex-wrap: wrap;
 }
-
+#comoFunciona{
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
 .card{
 
     border:none;
     border-radius:20px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-color: #f7f7f7 !important;
     
     
 }
@@ -60,10 +65,11 @@ button{
 
 body{
     font-family: "Noto Sans";
+    background-color: #f2f2f2 !important;
 }
 h2{
     font-family: "Patua One";
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 @font-face {
     font-family: "Patua One";
@@ -99,4 +105,15 @@ footer{
     text-align: center;
     font-size: 0.6em;
     margin-bottom: 0px !important; 
+}
+#penosaco{
+    margin-right: 128px;
+    margin-bottom: 40px;
+}
+#titulo{
+    margin-bottom: 80px;
+}
+#nav{
+    font-family: "Patua One";
+    background-color: #f2f2f2 !important;
 }

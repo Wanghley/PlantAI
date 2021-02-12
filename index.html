@@ -14,16 +14,11 @@
 </head>
 <body>
     <!-- Barra de navegação -->
-  <div class="container" style="position: sticky; top: 0;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <div class="container" style="position: sticky; top: 0; z-index: 3;">
+    <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between" id="nav" >
         <a class="navbar-brand" href="#">
-            <img src="imagens/logo.png" width="35" height="35" alt="">
-            PlantAi
+            <img src="imagens/logo-horizontal-colored.png"  height="40" alt="">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto navbar-center">
             <li class="nav-item">
@@ -41,6 +36,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Contato</a>
             </li>
+            <li class="nav-item">
+              <img src="imagens/google-play-badge.png" width="130px">
+            </li>
+          </ul>
             
         </div>
     </nav>
@@ -49,8 +48,8 @@
     <!--Conheça a ideia -->
     <div class="container" id="conheca">
         <div>
-            <h2>Conheça a ideia</h2>
-            <p>Olá, nós somos a PlantAI, uma empresa que visa potencializar o cultivo das plantas de nossos clientes de forma prática e facilitada, propondo soluções de problemas através do reconhecimento de imagem utilizando inteligencia artificial entre outras tecnologias que compõe a industria 4.0.</p>
+            <h2 id="titulo">Conheça a ideia</h2>
+            <p id="penosaco">Olá, nós somos a PlantAI, uma empresa que visa potencializar o cultivo das plantas de nossos clientes de forma prática e facilitada, propondo soluções de problemas através do reconhecimento de imagem utilizando inteligencia artificial entre outras tecnologias que compõe a industria 4.0.</p>
             <button type="button" class="btn btn-primary" >como funciona?</button>
         </div>
         <img src="imagens/estufa.png" alt=""height=400>
@@ -91,47 +90,44 @@
                   <p class="card-text">João Pedro Soares</p>
                 </div>
             </div>
-            
-        </div>
-        <div class="fotos" style="margin-left:132px;">
             <div class="card card-p">
-                <img src="imagens/fotoVinicius.png" class="card-img-top card-img-top-p" alt="">
-                <div class="card-body card-body-p">
-                  <p class="card-text">Vinícius Antunes</p>
-                </div>
-            </div>
-            <div class="card card-p">
-                <img src="imagens/fotoWanghley.png" class="card-img-top card-img-top-p" alt="">
-                <div class="card-body card-body-p">
-                  <p class="card-text">Wanghley Martins</p>
-                </div>
-            </div>
+              <img src="imagens/fotoVinicius.png" class="card-img-top card-img-top-p" alt="">
+              <div class="card-body card-body-p">
+                <p class="card-text">Vinícius Antunes</p>
+              </div>
+          </div>
+          <div class="card card-p">
+              <img src="imagens/fotoWanghley.png" class="card-img-top card-img-top-p" alt="">
+              <div class="card-body card-body-p">
+                <p class="card-text">Wanghley Martins</p>
+              </div>
+          </div>
         </div>
     </div>
     <!--Como funciona-->
     <div class="container" id="como">
       <h2>Como a PlantAi funciona</h2>
       <p> PlantAi é um aplicativo que pode fazer reconhecimento de doenças a partir de uma fotografia, assim oferecendo uma solução eficaz para um maior rendimento da sua produção.</p>
-      <div class="fotos">
-        <div class="card card-g" style=>
+      <div id="comoFunciona">
+        <div class="card card-g" >
           <img src="imagens/logo.png" class="card-img-top card-img-top-g" alt="">
           <div class="card-body card-body-g">
             <p class="card-text">Baixe o aplicativo PlantAi na PlayStore</p>
           </div>
         </div>
-        <div class="card card-g" style=>
+        <div class="card card-g" >
           <img src="imagens/celular.png" class="card-img-top card-img-top-g" alt="">
           <div class="card-body card-body-g">
             <p class="card-text">Faça cadastro no aplicativo</p>
           </div>
         </div>
-        <div class="card card-g" style=>
+        <div class="card card-g" >
           <img src="imagens/camera.png" class="card-img-top card-img-top-g" alt="">
           <div class="card-body card-body-g">
             <p class="card-text">Tire foto da planta adoecida</p>
           </div>
         </div>
-        <div class="card card-g" style=>
+        <div class="card card-g">
           <img src="imagens/plantinha.png" class="card-img-top card-img-top-g" alt="">
           <div class="card-body card-body-g">
             <p class="card-text">Diagnostique sua planta em instantes</p>
@@ -146,19 +142,19 @@
     <!--Perguntas frequentes-->
     <div class="container" id="faq">
       <h2>Perguntas frequentes</h2>
-      <div class="card questoes" style="width: 50rem;">
+      <div class="card questoes" style="width: 100%;">
         <div class="card-body">
           <h5 class="card-title">Onde posso encontrar o aplicativo?</h5>
           <p class="card-text">Você pode baixar gratuitamente nosso aplicativo na Google Play Store. Ainda não temos previsões para lançamentos no sistema IOS</p>
         </div>
       </div>
-      <div class="card questoes" style="width: 50rem;">
+      <div class="card questoes" style="width: 100%;">
         <div class="card-body">
           <h5 class="card-title">Em quanto tempo eu tenho o resultado do diagnóstico das minha planta?</h5>
           <p class="card-text">Depois do upload da imagem, o PlantAI processa sua imagem, te dando o diagnóstico da sua planta em questão de segundos.</p>
         </div>
       </div>
-      <div class="card questoes" style="width: 50rem;">
+      <div class="card questoes" style="width: 100%;">
         <div class="card-body">
           <h5 class="card-title">Se estiver offline, posso utilizar o app?</h5>
           <p class="card-text">Sim, mas o upload da imagem só será feito para o aplicativo quando houver uma conexão a internet.</p>
@@ -201,13 +197,13 @@
       </div>
     </div>
     <!--Footer-->
-    <footer class="container">
+    <footer>
       <div id="footer-imgs">
         <img src="imagens/logo.png" alt="" width="50px">
         <img src="imagens/instagramLogo.png" alt="" width="50px">
         <img src="imagens/facebookLogo.png" alt="" width="50px">
       </div>
-      <p>© 2020 Copyright- PlantAi</p>
+      <p style="margin-bottom: 0px;">© 2020 Copyright- PlantAi</p>
     </footer>
 </body>
 </html>
