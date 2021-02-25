@@ -10,7 +10,16 @@ export default function Home({ navigation }) {
         title="ir para login"
         onPress={() => navigation.navigate('Login')}
       />
+      <Button
+        title="ir para resultado"
+        onPress={() => navigation.navigate('Resultado')}
+      />
+      <Button
+        title="ir para camera"
+        onPress={() => navigation.navigate('Camera')}
+      />
     </View>
+    
   );
 }
 
