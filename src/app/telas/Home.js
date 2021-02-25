@@ -16,7 +16,7 @@ export default function Home({ navigation }) {
       />
       <Button
         title="ir para camera"
-        onPress={() => navigation.navigate('Camera')}
+        onPress={() => navigation.navigate('Cam')}
       />
     </View>
     

@@ -1,8 +1,10 @@
 import React, { useState, useEffect , useRef} from 'react';
 import { StyleSheet, Text, View as SaveAreaView, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
+import { MaterialIcons } from '@expo/vector-icons'; 
 import {FontAwesome} from '@expo/vector-icons';
-export default function App() {
+
+export default function Cam() {
   const camRef = useRef (null);
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
@@ -32,16 +34,14 @@ console.log(data);
     <SaveAreaView style={styles.container}>
       <Camera style={styles.camera} type={type} ref={camRef} >
         <SaveAreaView style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
+          <TouchableOpacity style={styles.button} onPress={() => {
               setType(
                 type === Camera.Constants.Type.back
                   ? Camera.Constants.Type.front
                   : Camera.Constants.Type.back
               );
             }}>
-            <Text style={styles.text}> trocar câmera </Text>
+            <MaterialIcons name="flip-camera-android" size={35} color="white" />
           </TouchableOpacity>
 
           
@@ -49,8 +49,8 @@ console.log(data);
         </SaveAreaView>
       </Camera>
 
-      <TouchableOpacity style={styles.button} onPress={takePicture}>
-<FontAwesome name="camera" size={23} color="f2f2f2" />
+      <TouchableOpacity style={styles.button2} onPress={takePicture}>
+<FontAwesome name="camera" size={23} color="#000" />
 
           </TouchableOpacity>
       
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
   },
   camera: {
     flex: 1,
+    
   },
   buttonContainer: {
     flex: 1,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     button2:{
     justifyContent: 'center',
     alignItems:'center',
-    backgroundColor:'#121212',
+    backgroundColor:'#80c780',
     margin: 20,
     borderRadius: 10,
     height:50,
