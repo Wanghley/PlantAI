@@ -1,6 +1,6 @@
-.btn{
-    background-color: #F7A22B !important;
-    border-color: #F7A22B !important;
+.btn-primary{
+    background-color: #F7A22B;
+    border-color: #F7A22B;
 }
 #conheca {
     margin: auto;
