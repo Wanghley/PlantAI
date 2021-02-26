@@ -1,0 +1,30 @@
+{
+  "name": "plantai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wanghley/PlantAI.git"
+  },
+  "author": "Wanghley Soares Martins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wanghley/PlantAI/issues"
+  },
+  "homepage": "https://github.com/Wanghley/PlantAI#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
