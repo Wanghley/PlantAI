@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 a.anchor {
     display: block;
     position: relative;
@@ -12,6 +13,7 @@ a.anchor {
     margin: auto;
     display: flex;
     justify-content: center;
+    margin-bottom: 5rem;
 }
 #quem {
     margin: auto;
@@ -21,6 +23,7 @@ a.anchor {
 }
 #quemquem{
     margin-left: 50px;
+    font-family: 'Roboto', sans-serif;
 }
 .card-image-top-p{
     width:95px;
@@ -34,11 +37,15 @@ a.anchor {
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+#como p{
+    font-family: 'Roboto', sans-serif;
+}
 #comoFunciona{
     margin: auto;
     display: flex;
     justify-content: flex-start;
     flex-wrap: nowrap;
+    font-family: 'Roboto', sans-serif;
 }
 .card{
 
@@ -65,6 +72,20 @@ a.anchor {
     margin-right: auto;
     margin-top:5px;
 }
+.card-text{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.card-text p{
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+.card-text a{
+    font-size: 1rem;
+    color: #0EA956;
+    text-decoration: none;
+}
 .card-body-p{
     padding: 8px;
 }
@@ -73,9 +94,13 @@ body{
     font-family: "Noto Sans";
     background-color: #f2f2f2 !important;
 }
+h1{
+    font-family: "Patua One";
+    margin-bottom: 1rem;
+}
 h2{
     font-family: "Patua One";
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 @font-face {
     font-family: "Patua One";
@@ -91,6 +116,8 @@ label{
 }
 .questoes{
     margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300 !important;
 }
 .container{
     margin-bottom: 70px;
@@ -119,9 +146,11 @@ footer{
 #penosaco{
     margin-right: 128px;
     margin-bottom: 40px;
+    font-family: 'Roboto', sans-serif;
 }
 #titulo{
-    margin-bottom: 80px;
+    margin-top: 6rem;
+    margin-bottom: 20px;
 }
 #nav{
     font-family: "Patua One";
