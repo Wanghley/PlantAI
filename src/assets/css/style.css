@@ -1,3 +1,9 @@
+a.anchor {
+    display: block;
+    position: relative;
+    top: -60px;
+    visibility: hidden;
+}
 .btn-primary{
     background-color: #F7A22B;
     border-color: #F7A22B;
