@@ -89,6 +89,10 @@ label{
 .container{
     margin-bottom: 70px;
 }
+.container#qSomos{
+    display: grid;
+    justify-content: center;
+}
 #para-esquerda{
     display: flex;
     justify-content: flex-end;
