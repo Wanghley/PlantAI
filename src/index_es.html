@@ -6,7 +6,8 @@
 <title>PlantAI</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
 <!-- links e scripts -->
 <!--  <link href=“css/seu-stylesheet.css” rel=“stylesheet”/>
  <script src=“scripts/seu-script.js”></script> -->
@@ -17,7 +18,7 @@
   <div class="container" style="position: sticky; top: 0; z-index: 3;">
     <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between" id="nav" >
         <a class="navbar-brand" href="#">
-            <img src="../assets/images/logo-horizontal-colored.png"  height="40" alt="">
+            <img src="/images/logo-horizontal-colored.png"  height="40" alt="">
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto navbar-center">
@@ -37,10 +38,19 @@
                 <a class="nav-link" href="#contato">Contacto</a>
             </li>
             <li class="nav-item">
-              <img src="../assets/images/google-play-badge-es.png" width="130px">
+              <img src="/images/google-play-badge-es.png" width="130px">
             </li>
           </ul>
-            
+        </div>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="flag-icon flag-icon-es"></i></i> Español
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a id="pt_lang" class="dropdown-item" href="/"><i class="flag-icon flag-icon-br"></i></i> Portugués</a></li>
+            <li><a id="en_lang" class="dropdown-item" href="/en"><i class="flag-icon flag-icon-us"></i></i> Inglés</a></li>
+            <li><a id="es_lang" class="dropdown-item disabled" href="#"><i class="flag-icon flag-icon-es"></i></i> Español</a></li>
+          </ul>
         </div>
     </nav>
   </div>
@@ -52,14 +62,14 @@
             <p id="penosaco">Hola, somos PlantAI, una empresa que pretende mejorar el cultivo de las plantas de nuestros clientes de forma práctica y facilitada, proponiendo soluciones a problemas mediante el reconocimiento de imágenes utilizando, entre otras tecnologías, de la inteligencia artificial que compone la industria 4.0.</p>
             <a type="button" class="btn btn-primary" href="#como" >¿Como funciona?</a>
         </div>
-        <img src="../assets/images/estufa.png" alt=""height=400>
+        <img src="/images/estufa.png" alt=""height=400>
     </div>
     
     <!-- Quem somos -->
     <div class="container" id="qSomos">
         <h2>¿Quiénes somos?</h2>
         <div id="quem">
-            <img src="../assets/images/logo.png" width="150">
+            <img src="/images/logo.png" width="150">
             <div id="quemquem">
                 <p>Somos una empresa que emprende ayudando a los agricultores, pequeños y medianos, con dificultades en sus plantaciones principalmente enfermedades y plagas.</p>
                 <a type="button" class="btn btn-primary" href="#como">Conozca la solución</a>
@@ -67,37 +77,37 @@
         </div>
         <div class="fotos">
             <div class="card card-p">
-                <img src="../assets/images/fotoDavi.png" class="card-img-top card-img-top-p" alt="">
+                <img src="/images/fotoDavi.png" class="card-img-top card-img-top-p" alt="">
                 <div class="card-body card-body-p">
                   <p class="card-text">Davi Lemos</p>
                 </div>
             </div>
             <div class="card card-p">
-                <img src="../assets/images/fotoGustavo.png" class="card-img-top card-img-top-p" alt="">
+                <img src="/images/fotoGustavo.png" class="card-img-top card-img-top-p" alt="">
                 <div class="card-body card-body-p">
                   <p class="card-text">Gustavo Araújo</p>
                 </div>
             </div>
             <div class="card card-p">
-                <img src="../assets/images/fotoIasmin.png" class="card-img-top card-img-top-p" alt="">
+                <img src="/images/fotoIasmin.png" class="card-img-top card-img-top-p" alt="">
                 <div class="card-body card-body-p">
                   <p class="card-text">Iasmin Marques</p>
                 </div>
             </div>
             <div class="card card-p">
-                <img src="../assets/images/fotoJoao.png" class="card-img-top card-img-top-p" alt="">
+                <img src="/images/fotoJoao.png" class="card-img-top card-img-top-p" alt="">
                 <div class="card-body card-body-p">
                   <p class="card-text">João Pedro Soares</p>
                 </div>
             </div>
             <div class="card card-p">
-              <img src="../assets/images/fotoVinicius.png" class="card-img-top card-img-top-p" alt="">
+              <img src="/images/fotoVinicius.png" class="card-img-top card-img-top-p" alt="">
               <div class="card-body card-body-p">
                 <p class="card-text">Vinícius Antunes</p>
               </div>
           </div>
           <div class="card card-p">
-              <img src="../assets/images/fotoWanghley.png" class="card-img-top card-img-top-p" alt="">
+              <img src="/images/fotoWanghley.png" class="card-img-top card-img-top-p" alt="">
               <div class="card-body card-body-p">
                 <p class="card-text">Wanghley Martins</p>
               </div>
@@ -110,32 +120,32 @@
       <p> PlantAI es una aplicación que puede realizar el reconocimiento de enfermedades a partir de una fotografía, ofreciendo así una solución eficaz para un mayor rendimiento de su producción.</p>
       <div id="comoFunciona">
         <div class="card card-g" >
-          <img src="../assets/images/logo.png" class="card-img-top card-img-top-g" alt="">
+          <img src="/images/logo.png" class="card-img-top card-img-top-g" alt="">
           <div class="card-body card-body-g">
             <p class="card-text">Descargar la solicitudPlantAi en Playstore</p>
           </div>
         </div>
         <div class="card card-g" >
-          <img src="../assets/images/celular.png" class="card-img-top card-img-top-g" alt="">
+          <img src="/images/celular.png" class="card-img-top card-img-top-g" alt="">
           <div class="card-body card-body-g">
             <p class="card-text">Hacer un registro en la aplicación</p>
           </div>
         </div>
         <div class="card card-g" >
-          <img src="../assets/images/camera.png" class="card-img-top card-img-top-g" alt="">
+          <img src="/images/camera.png" class="card-img-top card-img-top-g" alt="">
           <div class="card-body card-body-g">
             <p class="card-text">Haz una foto de la planta enferma</p>
           </div>
         </div>
         <div class="card card-g">
-          <img src="../assets/images/plantinha.png" class="card-img-top card-img-top-g" alt="">
+          <img src="/images/plantinha.png" class="card-img-top card-img-top-g" alt="">
           <div class="card-body card-body-g">
             <p class="card-text">Diagnostique suplanta en momentos</p>
           </div>
         </div>
       </div>
       <div id="para-esquerda">
-        <img src="../assets/images/google-play-badge-es.png" width="180px">
+        <img src="/images/google-play-badge-es.png" width="180px">
       </div>
     </div>
 
@@ -192,9 +202,9 @@
     <!--Footer-->
     <footer>
       <div id="footer-imgs">
-        <img src="../assets/images/logo.png" alt="" width="50px">
-        <img src="../assets/images/instagramLogo.png" alt="" width="50px">
-        <img src="../assets/images/facebookLogo.png" alt="" width="50px">
+        <img src="/images/logo.png" alt="" width="50px">
+        <img src="/images/instagramLogo.png" alt="" width="50px">
+        <img src="/images/facebookLogo.png" alt="" width="50px">
       </div>
       <p style="margin-bottom: 0px;">© 2020 Copyright- PlantAi</p>
     </footer>
