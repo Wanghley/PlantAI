@@ -30,7 +30,7 @@ class Prediction():
         json_file.close()
         loaded_model = model_from_json(loaded_model_json)
         # load weights into new model
-        loaded_model.load_weights("model/model.h5")
+        loaded_model.load_weights("https://github.com/Wanghley/PlantAI/blob/main/src/api/model/model.h5?raw=true")
         model = loaded_model
         labels = pickle.load(open("model/labels.pkl", "rb"))
 
