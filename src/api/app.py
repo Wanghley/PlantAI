@@ -3,12 +3,15 @@ from keras.preprocessing.image import img_to_array
 import numpy as np
 import pickle, os, cv2, werkzeug, flask
 from werkzeug.utils import secure_filename
+import sqlite3
+from sqlite3 import Error
 
 
 # Global Variables and Constants
-global model, labels, predict
+global model, labels, predict, database
 DEFAULT_IMAGE_SIZE = tuple((256, 256))
 UPLOAD_FOLDER = 'uploads/'
+DB_PATH = 'database/PlantAI.db'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 MAX_CONTENT_PATH = 5242880  # 5MB
 
@@ -53,7 +56,31 @@ class Prediction():
         result = model.predict_classes(np_image)
         return labels.classes_[result][0]
 
+class DataBase():
+    def __init__(self,path):
+        self.conn = None
+        try:
+            self.conn = sqlite3.connect(path,check_same_thread=False)
+        except Error as e:
+            print(e)
 
+    def selectPlant(self,plant):
+        self.conn.row_factory = sqlite3.Row
+        self.cur = self.conn.cursor()
+        self.cur.execute("SELECT * FROM ESPECIE WHERE ID=?",(plant,))
+
+        result = dict()
+
+        for r in self.cur.fetchall():
+            result.update(r)
+
+        return result
+    
+    def close(self):
+        try:
+            self.conn.cursor().close()
+        except Exception as e:
+            return flask.Response("Contact the system admin. ERROR code: failed to close db",status=500)
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -73,12 +100,21 @@ def upload_file():
             f.save(f_path)
 
             plant, condition = predict.predict_disease(f_path).split('___')
+            print(plant)
+
+            diagnosis = dict(database.selectPlant(plant))
 
             result = {
                 'status':'success',
-                'plant':plant,
-                'condition':condition
+                'ID':plant,
+                'condition':condition,
+                'name': diagnosis.get('NOME',None)
             }
+            
+            database.close()
+
+            if os.path.exists(f_path):
+                os.remove(f_path)
 
             resp = flask.jsonify(result)
             resp.status_code=202
@@ -88,6 +124,7 @@ def upload_file():
 
 
 if __name__ == '__main__':
-    global predict
+    global predict, database
+    database = DataBase(DB_PATH)
     predict = Prediction()
     app.run(port=8000, debug=True)
