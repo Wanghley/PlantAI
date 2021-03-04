@@ -1,7 +1,7 @@
 from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
 import numpy as np
-import pickle, os, cv2, werkzeug, flask
+import pickle, os, cv2, werkzeug, flask, base64
 from werkzeug.utils import secure_filename
 import sqlite3
 from sqlite3 import Error
@@ -73,7 +73,17 @@ class DataBase():
 
         for r in self.cur.fetchall():
             result.update(r)
+        return result
 
+    def selectCondition(self,condition_id):
+        self.conn.row_factory = sqlite3.Row
+        self.cur = self.conn.cursor()
+        self.cur.execute("SELECT * FROM DOENCA WHERE ID=?",(condition_id,))
+
+        result = dict()
+
+        for r in self.cur.fetchall():
+            result.update(r)
         return result
     
     def close(self):
@@ -102,19 +112,44 @@ def upload_file():
             plant, condition = predict.predict_disease(f_path).split('___')
             print(plant)
 
-            diagnosis = dict(database.selectPlant(plant))
+            metadata = dict(database.selectPlant(plant))
+            diagnosis = dict(database.selectCondition(condition))
+
+            #image processing
+            image = metadata.get('IMAGE',None)
+            with open("uploads/image.jpg", "wb") as binary_file:
+                binary_file.write(image)
+            fh = open('uploads/image.jpg','rb')
+            image = base64.b64encode(fh.read())
+
+            imageD = diagnosis.get('IMAGE',None)
+            with open("uploads/imageD.jpg", "wb") as binary_file:
+                binary_file.write(image)
+            fh = open('uploads/imageD.jpg','rb')
+            imageD = base64.b64encode(fh.read())
 
             result = {
-                'status':'success',
+                'STATUS':'success',
                 'ID':plant,
-                'condition':condition,
-                'name': diagnosis.get('NOME',None)
+                'ID_DIAG':condition,
+                'SPECIE': metadata.get('NOME',None),
+                'S_IMAGE': image,
+                'DIAG': diagnosis.get('NOME',None),
+                'DESC': diagnosis.get('DESCRICAO',None),
+                'D_IMAGE': imageD,
+                'CAUSE': diagnosis.get('CAUSAS',None),
+                'TREAT': diagnosis.get('TRATAMENTOS',None),
+                'INFO': diagnosis.get('INFOS',None)
             }
             
             database.close()
 
             if os.path.exists(f_path):
                 os.remove(f_path)
+            if os.path.exists('uploads/image.jpg'):
+                os.remove('uploads/image.jpg')
+            if os.path.exists('uploads/imageD.jpg'):
+                os.remove('uploads/imageD.jpg')
 
             resp = flask.jsonify(result)
             resp.status_code=202
