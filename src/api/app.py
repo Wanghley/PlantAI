@@ -1,7 +1,8 @@
 from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
 import numpy as np
-import pickle, os, cv2, werkzeug, flask, base64
+import pickle, os, cv2, werkzeug, flask
+import base64
 from werkzeug.utils import secure_filename
 import sqlite3
 from sqlite3 import Error
@@ -30,7 +31,7 @@ class Prediction():
         json_file.close()
         loaded_model = model_from_json(loaded_model_json)
         # load weights into new model
-        loaded_model.load_weights("https://github.com/Wanghley/PlantAI/blob/main/src/api/model/model.h5?raw=true")
+        loaded_model.load_weights("model/model.h5")
         model = loaded_model
         labels = pickle.load(open("model/labels.pkl", "rb"))
 
@@ -119,14 +120,24 @@ def upload_file():
             image = metadata.get('IMAGE',None)
             with open("uploads/image.jpg", "wb") as binary_file:
                 binary_file.write(image)
-            fh = open('uploads/image.jpg','rb')
-            image = base64.b64encode(fh.read())
+            # fh = open('uploads/image.jpg','rb')
+            # image = fh.read()
+            with open('uploads/image.jpg', 'rb') as binary_file:
+                binary_file_data = binary_file.read()
+                base64_encoded_data = base64.b64encode(binary_file_data)
+                base64_message = base64_encoded_data.decode('utf-8')
+            image = base64_message
 
             imageD = diagnosis.get('IMAGE',None)
             with open("uploads/imageD.jpg", "wb") as binary_file:
-                binary_file.write(image)
-            fh = open('uploads/imageD.jpg','rb')
-            imageD = base64.b64encode(fh.read())
+                binary_file.write(imageD)
+            # fh = open('uploads/imageD.jpg','rb')
+            # imageD = base64.b64encode(fh.read())
+            with open('uploads/imageD.jpg', 'rb') as binary_file:
+                binary_file_data = binary_file.read()
+                base64_encoded_data = base64.b64encode(binary_file_data)
+                base64_message = base64_encoded_data.decode('utf-8')
+            imageD = base64_message
 
             result = {
                 'STATUS':'success',
