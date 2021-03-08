@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Linking,StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 export default function Resultado() {
+  const abrirLink = () => Linking.openURL('http://www.agraer.ms.gov.br/wp-content/uploads/2015/05/Manual_de_recomenda%C3%A7%C3%B5es_t%C3%A9cnicas_cultura_do_milho.pdf');
   return (
     <View style={{flex: 1,backgroundColor: '#f2f2f2'}}>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor: '#efefef'}}>
@@ -17,8 +18,8 @@ export default function Resultado() {
             É sempre importante estar manejando a sua plantação para evitar pragas como a lagarta do cartucho (Spodoptera frugiperda).
             </Text>
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <TouchableOpacity style={{backgroundColor:'#11A956',borderRadius:90, paddingVertical:15, paddingHorizontal:30}}>
-                    <Text style={{fontSize: 24,color:'#f2f2f2'}}>Mais Dicas</Text>
+                <TouchableOpacity style={{backgroundColor:'#11A956',borderRadius:90, paddingVertical:15, paddingHorizontal:30}} onPress={abrirLink}>
+                    <Text style={{fontSize: 24,color:'#f2f2f2'}}>Mais informações</Text>
                 </TouchableOpacity>
             </View>
         </View>
