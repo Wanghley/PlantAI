@@ -111,7 +111,7 @@ def upload_file():
             f.save(f_path)
 
             plant, condition = predict.predict_disease(f_path).split('___')
-            print(plant)
+
 
             metadata = dict(database.selectPlant(plant))
             diagnosis = dict(database.selectCondition(condition))

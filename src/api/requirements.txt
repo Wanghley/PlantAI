@@ -6,3 +6,4 @@ Flask==1.1.1
 sklearn==0.0
 tensorflow==2.4.1
 tensorflow-estimator==2.4.0
+h5py==2.10.0
