@@ -1,3 +1,5 @@
 node_modules/
 src/api/bin/
 src/api/lib/
+src/api/lib64
+src/api/share/
