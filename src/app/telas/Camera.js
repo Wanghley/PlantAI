@@ -7,10 +7,10 @@ import * as ImagePicker from "expo-image-picker";
 export default function Cam({ navigation }) {
 
   const [preview, setPreview] = useState("");
-  const [types, setTypes] = useState(true);
+  const [Bio, setBio] = useState(false);
   const [upload, setUpload] = useState(null);
   function handleSelectTypeImage() {
-    setTypes(true);
+    setBio(true);
   }
 
   async function UploadImage() {
@@ -36,7 +36,7 @@ export default function Cam({ navigation }) {
 
   async function handleSelectCamera() {
 
-    setTypes(false);
+    
     const result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -47,6 +47,7 @@ export default function Cam({ navigation }) {
     if (result.error) {
       console.log("Error")
     } else {
+      setBio(true);
       let prefix;
       let ext;
       if (result.fileName) {
@@ -70,7 +71,7 @@ export default function Cam({ navigation }) {
 
 
   async function handleSelectGalery() {
-    setTypes(false);
+    
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
 
@@ -81,6 +82,7 @@ export default function Cam({ navigation }) {
     if (result.error) {
       console.log("Error")
     } else {
+      setBio(true);
       let prefix;
       let ext;
       if (result.fileName) {
@@ -108,8 +110,8 @@ export default function Cam({ navigation }) {
         marginTop: 100,
         justifyContent: "center",
         alignItems: "center",
-        width: 230,
-        height: 240,
+        width: 256,
+        height: 256,
         borderWidth: preview ? 0 : 1,
         borderStyle: "dashed",
         borderColor: "#fff",
@@ -118,31 +120,40 @@ export default function Cam({ navigation }) {
       }}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => handleSelectTypeImage()}
+          
         >
-          {types && (
-            <View style={styles.containerType}>
-              <TouchableOpacity onPress={handleSelectGalery} >
-                <Text style={styles.textButton}>Selecionar da galeria</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={handleSelectCamera}>
-                <Text style={styles.textButton}>Capturar da câmera</Text>
-              </TouchableOpacity>
-            </View>
-          )}
+          
+            
+          
           {preview.length > 0 ? (
             <Image style={styles.image} source={{
               uri: preview
             }} />
           ) :
             (<Text></Text>)}
+        
         </TouchableOpacity>
+
+        
       </View>
-      <Text style={styles.bioLabel}>Selecione uma imagem de perfil</Text>
+      <View><Text style={styles.bioLabel}>Selecione uma imagem de perfil</Text> </View>
+
+      <View style={styles.containerType}>
+              <TouchableOpacity onPress={handleSelectGalery} >
+                <Text style={styles.textButton}>Selecionar da galeria</Text>
+              </TouchableOpacity>
+              </View>
+              
+              <View style={styles.containerType2}>
+              <TouchableOpacity onPress={() => handleSelectTypeImage()} onPress={handleSelectCamera}>
+                <Text style={styles.textButton}>Capturar da câmera</Text>
+              </TouchableOpacity>
+            </View>
+        {Bio && (    
       <TouchableOpacity onPress={UploadImage} style={styles.bioButton}>
         <Text style={styles.Label} >Avançar</Text>
       </TouchableOpacity>
-
+)}
     </SafeAreaView>
   );
 }
@@ -153,23 +164,39 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     resizeMode: "cover",
-    alignItems: "center"
+    alignItems: "center",
+    
   },
   image: {
     height: "100%",
     width: "100%",
     resizeMode: "cover",
-    borderRadius: 7
+    borderRadius: 7, 
+    marginBottom:20
   },
   containerType: {
     width: 230,
-    height: 100,
+    height: 50,
     backgroundColor: "#fff",
-    borderRadius: 5,
+    borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
+    marginTop:20,
+    marginBottom:5,
     zIndex: 1
+    
   },
+  containerType2: {
+    width: 230,
+    height: 50,
+    backgroundColor: "#fff",
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    
+    
+  },
+
   textButton: {
     fontSize: 16,
     fontWeight: "bold",
@@ -179,9 +206,10 @@ const styles = StyleSheet.create({
   button: {
     width: "100%",
     height: "100%",
-    backgroundColor: 'black',
+    backgroundColor: 'transparent',
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginBottom: 20,
   },
   camera: {
     height: 30,
@@ -193,7 +221,7 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 16,
     textAlign: "center",
-    marginTop: 60,
+    
   },
   Label: {
     color: "#fff",
