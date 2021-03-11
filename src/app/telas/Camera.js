@@ -136,7 +136,7 @@ export default function Cam({ navigation }) {
 
         
       </View>
-      <View><Text style={styles.bioLabel}>Selecione uma imagem de perfil</Text> </View>
+      <Text style={styles.bioLabel}>Escolha a imagem da sua planta</Text> 
 
       <View style={styles.containerType}>
               <TouchableOpacity onPress={handleSelectGalery} >
@@ -146,7 +146,7 @@ export default function Cam({ navigation }) {
               
               <View style={styles.containerType2}>
               <TouchableOpacity onPress={() => handleSelectTypeImage()} onPress={handleSelectCamera}>
-                <Text style={styles.textButton}>Capturar da câmera</Text>
+                <Text style={styles.textButton}>Abrir câmera</Text>
               </TouchableOpacity>
             </View>
         {Bio && (    
