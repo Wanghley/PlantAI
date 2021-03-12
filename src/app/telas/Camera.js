@@ -24,7 +24,7 @@ export default function Cam({ navigation }) {
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
         console.log(this.responseText);
-        resultado= JSON.parse(this.responseText);
+        resultado= JSON.stringify(this.responseText);
         navigation.navigate('Resultado');
       }
     });
@@ -45,7 +45,7 @@ export default function Cam({ navigation }) {
       aspect: [1, 1],
 
     })
-    if (result.error) {
+    if (result.cancelled) {
       console.log("Error")
     } else {
       setBio(true);
@@ -80,7 +80,8 @@ export default function Cam({ navigation }) {
       aspect: [1, 1],
 
     });
-    if (result.error) {
+    
+    if (result.cancelled) {
       console.log("Error")
     } else {
       setBio(true);
