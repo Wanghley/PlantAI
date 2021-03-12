@@ -24,12 +24,12 @@ export default function Cam({ navigation }) {
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
         console.log(this.responseText);
-        resultado= JSON.stringify(this.responseText);
+        resultado= JSON.parse(this.responseText);
         navigation.navigate('Resultado');
       }
     });
 
-    xhr.open("POST", "http://5b19e1b86726.ngrok.io/");
+    xhr.open("POST", "https://shy-dodo-70.loca.lt/");
 
     xhr.send(data);
   }
