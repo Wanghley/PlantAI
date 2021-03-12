@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { SafeAreaView, View, StyleSheet, TouchableOpacity, Image, Text, TextInput } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-
 export let resultado;
 
+
 export default function Cam({ navigation }) {
+
   const [preview, setPreview] = useState("");
   const [Bio, setBio] = useState(false);
   const [upload, setUpload] = useState(null);
@@ -22,6 +23,7 @@ export default function Cam({ navigation }) {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
+        console.log(this.responseText);
         resultado= JSON.parse(this.responseText);
         navigation.navigate('Resultado');
       }
@@ -106,14 +108,14 @@ export default function Cam({ navigation }) {
 
 
       <View style={{
-        marginTop: 100,
+        marginTop: 70,
         justifyContent: "center",
         alignItems: "center",
         width: 256,
         height: 256,
         borderWidth: preview ? 0 : 1,
         borderStyle: "dashed",
-        borderColor: "#fff",
+        borderColor: "#777",
         borderRadius: 7,
         resizeMode: 'contain',
       }}>
@@ -129,7 +131,12 @@ export default function Cam({ navigation }) {
               uri: preview
             }} />
           ) :
-            (<Text></Text>)}
+            (<Text style={{
+              color:'#777',
+
+
+            }}>
+              Sua imagem aparecerá aqui</Text>)}
         
         </TouchableOpacity>
 
@@ -143,7 +150,7 @@ export default function Cam({ navigation }) {
               </TouchableOpacity>
               </View>
               
-              <View style={styles.containerType2}>
+              <View style={styles.containerType}>
               <TouchableOpacity onPress={() => handleSelectTypeImage()} onPress={handleSelectCamera}>
                 <Text style={styles.textButton}>Abrir câmera</Text>
               </TouchableOpacity>
@@ -159,7 +166,7 @@ export default function Cam({ navigation }) {
 
 const styles = StyleSheet.create({
   back: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#fff',
     height: "100%",
     width: "100%",
     resizeMode: "cover",
@@ -176,50 +183,42 @@ const styles = StyleSheet.create({
   containerType: {
     width: 230,
     height: 50,
-    backgroundColor: "#fff",
+    backgroundColor: "#11A956",
     borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
-    marginTop:20,
-    marginBottom:5,
-    zIndex: 1
-    
-  },
-  containerType2: {
-    width: 230,
-    height: 50,
-    backgroundColor: "#fff",
-    borderRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
+    marginVertical:10,
     
     
   },
-
+    
+    
+  
   textButton: {
+    alignItems:'center',
+    justifyContent:'center',
     fontSize: 16,
     fontWeight: "bold",
-    color: "#777",
-    marginBottom: 8
+    color: "#fff",
+    marginBottom: 2
   },
   button: {
     width: "100%",
     height: "100%",
-    backgroundColor: 'transparent',
+    borderRadius:8,
+    backgroundColor: '#f2f2f2',
+    tintColor:'black',
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 20,
+    
   },
-  camera: {
-    height: 30,
-    width: 30,
-    resizeMode: "cover"
-  },
+  
 
   bioLabel: {
     color: "#000",
-    fontSize: 16,
+    fontSize: 18,
     textAlign: "center",
+    marginVertical:20,
     
   },
   Label: {
@@ -237,8 +236,8 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
-    backgroundColor: "#11A956"
+    marginTop: 40,
+    backgroundColor: "#F7A22B"
   }
 });
 
