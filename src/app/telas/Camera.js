@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { SafeAreaView, View, StyleSheet, TouchableOpacity, Image, Text, TextInput } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
-
+export let resultado;
 
 export default function Cam({ navigation }) {
-
   const [preview, setPreview] = useState("");
   const [Bio, setBio] = useState(false);
   const [upload, setUpload] = useState(null);
@@ -23,12 +22,12 @@ export default function Cam({ navigation }) {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        console.log(this.responseText);
+        resultado= JSON.parse(this.responseText);
         navigation.navigate('Resultado');
       }
     });
 
-    xhr.open("POST", "http://b619cacb4a44.ngrok.io/");
+    xhr.open("POST", "http://5b19e1b86726.ngrok.io/");
 
     xhr.send(data);
   }
