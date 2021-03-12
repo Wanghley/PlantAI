@@ -1,30 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert} from 'react-native';
 
-export default function Login() {
+export default function Login({ navigation }) {
  
   return (
     <View style={styles.container}>
-      <text>Tela Login</text>
-      <image
+      
+      <Image
       source={require('../assets/logo.png')}
       style={styles.logo}
       />
-      
+
 <TextInput
       style={styles.input}
       placeholder= "digite seu email"
       />
       <TextInput
-      style={styles.input}
+      style={styles.input2}
       secureTextEntry = {true}
       placeholder= "digite sua senha"
     />
-      <TouchableOpacity onPress={ ()=>{navigation.navigate('Camera');}}
+      <TouchableOpacity onPress={() => navigation.navigate('Cam')}
         style={styles.botao}
         
       >
-        <text style ={styles.botaoText}>Login</text>
+        <Text style ={styles.botaoText}>Login</Text>
       </TouchableOpacity>
 
 
@@ -51,7 +51,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
-    borderRadius: '3'
+    borderRadius: 3
+  },
+  input2: {
+    marginTop: 10,
+    padding: 10,
+    width: 300,
+    backgroundColor: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    borderRadius: 3
   },
   botao: {
     width: 300,
