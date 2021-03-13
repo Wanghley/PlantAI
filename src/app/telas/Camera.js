@@ -23,13 +23,12 @@ export default function Cam({ navigation }) {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        console.log(this.responseText);
         resultado= JSON.parse(this.responseText);
         navigation.navigate('Resultado');
       }
     });
 
-    xhr.open("POST", "https://shy-dodo-70.loca.lt/");
+    xhr.open("POST", "https://plantai.pagekite.me/");
 
     xhr.send(data);
   }

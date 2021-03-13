@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
+    "name": "PlantAI",
+    "slug": "plantai",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,10 +23,13 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.plantai.plantai"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "PlantAI - é um projeto que visa potencializar o cultivo de agricultores de forma prática e facilitada, propondo soluções de problemas através do reconhecimento de imagem utilizando inteligencia artificial entre outras tecnologias que compõe a industria 4.0.",
+    "githubUrl": "https://github.com/Wanghley/PlantAI"
   }
 }
