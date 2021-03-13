@@ -34,7 +34,7 @@ export default function Login({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     backgroundColor: '#f2f2f2',
     alignItems: 'center',
     justifyContent: 'center',
@@ -42,7 +42,10 @@ const styles = StyleSheet.create({
   logo: {
     width: 150,
     height: 150,
-    borderRadius: 100
+    borderRadius: 100,
+    marginTop: 140,
+    marginBottom:50
+
   },
   input: {
     marginTop: 10,

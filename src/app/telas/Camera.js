@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, View, StyleSheet, TouchableOpacity, Image, Text, TextInput } from "react-native";
+import { SafeAreaView, View, StyleSheet, TouchableOpacity, Image, Text, TextInput ,Button, Alert } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 export let resultado;
 
@@ -9,12 +9,27 @@ export default function Cam({ navigation }) {
   const [preview, setPreview] = useState("");
   const [Bio, setBio] = useState(false);
   const [upload, setUpload] = useState(null);
+  const ButtonAlert = () =>
+  Alert.alert(
+    "Alert Title",
+    "My Alert Msg",
+    [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel"
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") }
+    ],
+    { cancelable: false }
+  );
+
   function handleSelectTypeImage() {
     setBio(true);
   }
 
   async function UploadImage() {
-
+    setBio(false);
     var data = new FormData();
     data.append("image", upload);
 
@@ -23,12 +38,13 @@ export default function Cam({ navigation }) {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
+        
         resultado= JSON.parse(this.responseText);
         navigation.navigate('Resultado');
       }
     });
 
-    xhr.open("POST", "https://plantai.pagekite.me/");
+    xhr.open("POST", "http://plantai.pagekite.me/");
 
     xhr.send(data);
   }
