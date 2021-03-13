@@ -38,9 +38,12 @@ export default function Cam({ navigation }) {
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        
-        resultado= JSON.parse(this.responseText);
-        navigation.navigate('Resultado');
+          try {
+            resultado= JSON.parse(this.responseText);
+            navigation.navigate('Resultado');
+          } catch(e) {
+              alert("Não encontramos nenhum resultado possível"); 
+          }
       }
     });
 
