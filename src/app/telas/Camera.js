@@ -1,43 +1,54 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, View, ImageBackground, StyleSheet, TouchableOpacity, Image, Text, TextInput } from "react-native";
-//import background from "./assets/fazendomusica.jpg";
+import { SafeAreaView, View, StyleSheet, TouchableOpacity, Image, Text, TextInput } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-//import api from "../services/api";
+export let resultado;
 
 
-export default function Cam() {
+export default function Cam({ navigation }) {
+
   const [preview, setPreview] = useState("");
-  const [types, setTypes] = useState(true);
-  //const [upload, setUpload] = useState(null);
+  const [Bio, setBio] = useState(false);
+  const [upload, setUpload] = useState(null);
   function handleSelectTypeImage() {
-    setTypes(true);
+    setBio(true);
   }
-/*
-  async function UploadImage() {
-    const formData = new FormData();
-    formData.append("image", upload);
-    console.log(formData)
-    const { data } = await api.post("/posts", formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
 
-    // console.log(data)
-  }davilemon#5478
-*/
+  async function UploadImage() {
+
+    var data = new FormData();
+    data.append("image", upload);
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        console.log(this.responseText);
+        resultado= JSON.parse(this.responseText);
+        navigation.navigate('Resultado');
+      }
+    });
+
+    xhr.open("POST", "https://shy-dodo-70.loca.lt/");
+
+    xhr.send(data);
+  }
+
+
   async function handleSelectCamera() {
-    setTypes(false);
+
+    
     const result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      resizeMode : '' ,
-      aspect:[1,1],
+      resizeMode: '',
+      aspect: [1, 1],
 
     })
-    if (result.error) {
+    if (result.cancelled) {
       console.log("Error")
     } else {
+      setBio(true);
       let prefix;
       let ext;
       if (result.fileName) {
@@ -47,29 +58,33 @@ export default function Cam() {
         prefix = new Date().getTime();
         ext = 'jpg'
       }
-      /*
-     const imageUpload = {
-      uri: result.uri,
-        type: result.type,
+
+      const imageUpload = {
+        uri: result.uri,
+        type: 'image/jpg',
         name: `${prefix}.${ext}`
-      }*/
-      //setUpload(imageUpload);
+      }
+      setUpload(imageUpload);
       setPreview(result.uri);
-      console.log(result.uri);
     }
+
   }
-  
+
 
   async function handleSelectGalery() {
-    setTypes(false);
+    
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      
+
       allowsEditing: true,
+      aspect: [1, 1],
+
     });
-    if (result.error) {
+    
+    if (result.cancelled) {
       console.log("Error")
     } else {
+      setBio(true);
       let prefix;
       let ext;
       if (result.fileName) {
@@ -79,110 +94,133 @@ export default function Cam() {
         prefix = new Date().getTime();
         ext = 'jpg'
       }
-     /* const imageUpload = {
+      const imageUpload = {
         uri: result.uri,
-        type: result.type,
+        type: 'image/jpg',
         name: `${prefix}.${ext}`
-      }*/
-      //setUpload(imageUpload);
+      }
+      setUpload(imageUpload);
       setPreview(result.uri);
     }
   }
 
   return (
     <SafeAreaView style={styles.back}>
-      
 
-        <View style={{
-          marginTop: 100,
-          justifyContent: "center",
-          alignItems: "center",
-          width: 230,
-          height: 240,
-          borderWidth: preview ? 0 : 1,
-          borderStyle: "dashed",
-          borderColor: "#fff",
-          borderRadius: 7,
-          resizeMode : 'contain',
-        }}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => handleSelectTypeImage()}
-          >
-            {types && (
-              <View style={styles.containerType}>
-                <TouchableOpacity onPress={handleSelectGalery} >
-                  <Text style={styles.textButton}>Selecionar da galeria</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={handleSelectCamera}>
-                  <Text style={styles.textButton}>Capturar da câmera</Text>
-                </TouchableOpacity>
-              </View>
-            )}
-            {preview.length > 0 ? (
-              <Image style={styles.image} source={{
-                uri: preview
-              }} />
-            ) :
-              (<Text></Text>)}
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.bioLabel}>Selecione uma imagem de perfil</Text>
-        <TouchableOpacity style={styles.bioButton}>
-          <Text style={styles.Label} >Avançar</Text>
+
+      <View style={{
+        marginTop: 70,
+        justifyContent: "center",
+        alignItems: "center",
+        width: 256,
+        height: 256,
+        borderWidth: preview ? 0 : 1,
+        borderStyle: "dashed",
+        borderColor: "#777",
+        borderRadius: 7,
+        resizeMode: 'contain',
+      }}>
+        <TouchableOpacity
+          style={styles.button}
+          
+        >
+          
+            
+          
+          {preview.length > 0 ? (
+            <Image style={styles.image} source={{
+              uri: preview
+            }} />
+          ) :
+            (<Text style={{
+              color:'#777',
+
+
+            }}>
+              Sua imagem aparecerá aqui</Text>)}
+        
         </TouchableOpacity>
-      
+
+        
+      </View>
+      <Text style={styles.bioLabel}>Escolha a imagem da sua planta</Text> 
+
+      <View style={styles.containerType}>
+              <TouchableOpacity onPress={handleSelectGalery} >
+                <Text style={styles.textButton}>Selecionar da galeria</Text>
+              </TouchableOpacity>
+              </View>
+              
+              <View style={styles.containerType}>
+              <TouchableOpacity onPress={() => handleSelectTypeImage()} onPress={handleSelectCamera}>
+                <Text style={styles.textButton}>Abrir câmera</Text>
+              </TouchableOpacity>
+            </View>
+        {Bio && (    
+      <TouchableOpacity onPress={UploadImage} style={styles.bioButton}>
+        <Text style={styles.Label} >Avançar</Text>
+      </TouchableOpacity>
+)}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   back: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#fff',
     height: "100%",
     width: "100%",
     resizeMode: "cover",
-    alignItems: "center"
+    alignItems: "center",
+    
   },
   image: {
     height: "100%",
     width: "100%",
     resizeMode: "cover",
-    borderRadius: 7
+    borderRadius: 7, 
+    marginBottom:20
   },
   containerType: {
     width: 230,
-    height: 100,
-    backgroundColor: "#fff",
-    borderRadius: 5,
+    height: 50,
+    backgroundColor: "#11A956",
+    borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 1
+    marginVertical:10,
+    
+    
   },
+    
+    
+  
   textButton: {
+    alignItems:'center',
+    justifyContent:'center',
     fontSize: 16,
     fontWeight: "bold",
-    color: "#777",
-    marginBottom: 8
+    color: "#fff",
+    marginBottom: 2
   },
   button: {
     width: "100%",
     height: "100%",
-    backgroundColor: 'black',
+    borderRadius:8,
+    backgroundColor: '#f2f2f2',
+    tintColor:'black',
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    
   },
-  camera: {
-    height: 30,
-    width: 30,
-    resizeMode: "cover"
-  },
+  
 
   bioLabel: {
     color: "#000",
-    fontSize: 16,
+    fontSize: 18,
     textAlign: "center",
-    marginTop: 60,
+    marginVertical:20,
+    
   },
   Label: {
     color: "#fff",
@@ -199,9 +237,8 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
-    backgroundColor: "#11A956"
+    marginTop: 40,
+    backgroundColor: "#F7A22B"
   }
 });
 
-  

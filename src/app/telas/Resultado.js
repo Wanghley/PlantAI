@@ -1,30 +1,45 @@
 
 import React from 'react';
-import { Linking,StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Linking,StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView,  ScrollView} from 'react-native';
 
 export default function Resultado() {
-  const abrirLink = () => Linking.openURL('http://www.agraer.ms.gov.br/wp-content/uploads/2015/05/Manual_de_recomenda%C3%A7%C3%B5es_t%C3%A9cnicas_cultura_do_milho.pdf');
+  let resultado= require('./Camera.js').resultado;
+  function abrirLink() {
+    return Linking.openURL(resultado.INFO);
+  }
+  if(resultado.STATUS==="success"){
   return (
     <View style={{flex: 1,backgroundColor: '#f2f2f2'}}>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor: '#efefef'}}>
-            <Image source={require('../assets/milho.png')} style={{flex: 0.95,width: 900,height: 900,resizeMode: 'contain'}} />
+            <Image source={{uri: `data:image/gif;base64,${resultado.D_IMAGE}`}} style={{flex: 0.95,width: 900,height: 900,resizeMode: 'contain'}} />
 
         </View>
         <View style={{flex: 2}}>
-            <Text style={{ fontSize: 36, fontWeight: 'bold' }}>Zea mays everta</Text>
-            <Text style={{ fontSize: 24, fontWeight: 'bold' }}>(milho de pipoca)</Text>
-            <Text style={{ fontSize: 18}}>Sua planta está bem! Segundo o nosso diagnostico, sua planta está saudável e não identificamos nenhum tipo de praga ou doença.{"\n"}
-            Para ter uma eficiencia melhor na sua plantação disponibilizamos algumas dicas:{"\n"}
-            É sempre importante estar manejando a sua plantação para evitar pragas como a lagarta do cartucho (Spodoptera frugiperda).
-            </Text>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <SafeAreaView style={styles.container, {backgroundColor: '#f2f2f2'}}>
+              <ScrollView style={styles.scrollView}>
+                <Text style={{ fontSize: 24, fontWeight: 'bold' }}>{resultado.DIAG}</Text>
+                <Text style={{ fontSize: 24, fontWeight: 'bold' }}>{resultado.SPECIE}</Text>
+                <Text style={{ fontSize: 18}}>{resultado.DESC}</Text>
+                <Text style={{ fontSize: 18}}>{resultado.CAUSE}</Text>
+                <Text style={{ fontSize: 18}}>{resultado.TREAT}</Text>
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <TouchableOpacity style={{backgroundColor:'#11A956',borderRadius:90, paddingVertical:15, paddingHorizontal:30}} onPress={abrirLink}>
                     <Text style={{fontSize: 24,color:'#f2f2f2'}}>Mais informações</Text>
                 </TouchableOpacity>
-            </View>
+                </View>
+              </ScrollView>
+            </SafeAreaView>
         </View>
     </View>
   );
+  }
+  else{
+    return(
+      <View style={{flex: 1,backgroundColor: '#f2f2f2'}}>
+        <Text style={{ fontSize: 36, fontWeight: 'bold' }}>Não encontramos nenhum resultado possível</Text>
+        </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
